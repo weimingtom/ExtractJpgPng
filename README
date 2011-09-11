@@ -1,0 +1,46 @@
+---------------------------------
+I. HOW TO BUILD
+
+	1. Please first download OpenCV and boost
+	See also:
+		http://sourceforge.net/projects/opencvlibrary/
+		http://sourceforge.net/projects/boost/
+
+	2. Please use cmake and VC2008 to compile 4 libraries in OpenCV-2.2.0\3rdparty, as follow:
+		zlib、libpng、libtiff、libjpeg
+
+	(Please use cmake-gui to open CMakeLists.txt, and Add Entry:
+	WITH_JPEG
+	WITH_PNG
+	WITH_TIFF
+	then select all,
+	or modify CMakeLists.txt.
+	Press button Configure two times and button Generate one time to generate project file,
+	then use VC2008 to open Project.sln and build debug and release version of .lib files)
+
+	Then the .lib files go to the folder 3rdparty\lib。
+
+	3. VC2008 main menu->tools->options add include and libraries path of boost & opencv 3rdparty.
+	Create C++ console project, add opencv 3rdparty lib path to lib path of the project.  
+	Add libjpeg.lib zlib.lib libpng.lib libtiff.lib to lib dependencies.
+	Download gil numeric plugin, and unzip to folder boost\gil\extension.
+	See also:
+		http://opensource.adobe.com/wiki/display/gil/Downloads
+
+	4. If you want to use directly, please see prebuild.zip.
+	Now, I am not sure I can build this project by myself too :-)
+
+---------------------------------
+II. HOW TO USE
+	
+	This tool is used to extract png file to reduce size of game assets for game develop under Windows.
+	For example, first get a png file from character.exe
+	(See also:
+		http://khmix.sakura.ne.jp/download.shtml)
+	Then save the png file (with alpha layer!) to preview.png, 
+	and execute:
+		myaffine decompose preview.png output.jpg output.png
+		myaffine compose output.jpg output.png compose.png
+	Now you can get 2 new extracted images and 1 new compose image if no error happened.
+
+---------------------------------
